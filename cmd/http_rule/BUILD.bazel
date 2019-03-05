@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "go_default_library",
+    srcs = ["main.go"],
+    importpath = "github.com/EvyBongers/bazel-helpers/cmd/http_rule",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "http_rule",
+    embed = [":go_default_library"],
+    pure = "on",
+    visibility = ["//visibility:public"],
+)
